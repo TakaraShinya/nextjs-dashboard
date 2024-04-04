@@ -53,7 +53,7 @@ jobs:
         continue-on-error: true
         uses: k1LoW/octocov-action@v1
         with:
-          config: .octocov.runn.main.yml
+          config: runbook/.octocov.runn.main.yml
         env:
           OCTOCOV_GITHUB_REF: refs/heads/main
           OCTOCOV_GITHUB_SHA: none
@@ -64,6 +64,6 @@ jobs:
       - name: Run octocov
         uses: k1LoW/octocov-action@v1
         with:
-          config: .octocov.runn.yml
+          config: runbook/.octocov.runn.yml
         env:
           OCTOCOV_CUSTOM_METRICS_TEST: custom_metrics_runn.json
