@@ -1,0 +1,25 @@
+desc: Descriptionをつけて見やすくしましょう
+runners:
+  req: https://zenn.dev
+steps:
+- desc: "katzumiの記事一覧を取得します"
+  req:
+    /api/articles?username=katzumi&count=96&order=latest:
+      get:
+        headers:
+          Accept: '*/*'
+          Accept-Encoding: deflate, gzip
+          Accept-Language: ja,en-US;q=0.9,en;q=0.8,ko;q=0.7
+          Authority: zenn.dev
+          If-None-Match: W/"9b385c38c8f9e339034c678157cd50a5"
+          Referer: https://zenn.dev/katzumi
+          Sec-Ch-Ua: '"Google Chrome";v="119", "Chromium";v="119", "Not?A_Brand";v="24"'
+          Sec-Ch-Ua-Mobile: ?0
+          Sec-Ch-Ua-Platform: '"macOS"'
+          Sec-Fetch-Dest: empty
+          Sec-Fetch-Mode: cors
+          Sec-Fetch-Site: same-origin
+          User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36
+        body:
+          application/json: null
