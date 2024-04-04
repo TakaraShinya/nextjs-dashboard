@@ -1,0 +1,60 @@
+{
+  "articles": [
+    {
+      "article_type": "tech",
+      "body_letters_count": 8846,
+      "body_updated_at": "2024-04-01T19:19:42.957+09:00",
+      "comments_count": 0,
+      "emoji": "✏️",
+      "id": 254035,
+      "is_suspending_private": false,
+      "liked_count": 96,
+      "path": "/dmmdata/articles/694e32c34dbd4c",
+      "pinned": false,
+      "post_type": "Article",
+      "publication": {
+        "avatar_registered": true,
+        "avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--ALJONrt1--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://storage.googleapis.com/zenn-user-upload/avatar/58248eda75.jpeg",
+        "display_name": "DMM Data Blog",
+        "id": 623,
+        "name": "dmmdata",
+        "pro": false
+      },
+      "published_at": "2024-04-01T19:21:34.098+09:00",
+      "slug": "694e32c34dbd4c",
+      "source_repo_updated_at": null,
+      "title": "データ分析のためのSQLを書けるようになるために",
+      "user": {
+        "avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--1Uxu_4re--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/28edaf80db.jpeg",
+        "id": 11967,
+        "name": "hanata",
+        "username": "hanata"
+      }
+    },
+    {
+      "article_type": "tech",
+      "body_letters_count": 23426,
+      "body_updated_at": "2024-04-03T14:33:45.329+09:00",
+      "comments_count": 0,
+      "emoji": "🦉",
+      "id": 257179,
+      "is_suspending_private": false,
+      "liked_count": 289,
+      "path": "/moko_poi/articles/c2402f13a870a1",
+      "pinned": false,
+      "post_type": "Article",
+      "publication": null,
+      "published_at": "2024-03-31T01:58:38.573+09:00",
+      "slug": "c2402f13a870a1",
+      "source_repo_updated_at": null,
+      "title": "ブラウザからDBに行き着くまでただまとめる",
+      "user": {
+        "avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--4lPlfh8P--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/4b37860bf6.jpeg",
+        "id": 79263,
+        "name": "moko-poi",
+        "username": "moko_poi"
+      }
+    }
+  ],
+  "next_page": 2
+}

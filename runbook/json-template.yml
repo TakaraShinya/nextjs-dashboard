@@ -1,0 +1,44 @@
+desc: JSONテンプレートを利用してデータの柔軟性を高めましょう
+runners:
+  req:
+    endpoint: https://zenn.dev
+    useCookie: true
+vars:
+  session: ${SESSION}
+steps:
+  bindUuid:
+    desc: "ダミーのUUIDを発行してtitle_suffixという変数名でアクセス可能とする"
+    bind:
+      title_suffix: faker.UUID()
+  postScrap:
+    desc: "スクラップ記事を登録します"
+    include:
+      path: post-scrap.yml
+      vars:
+        request: "json://scrap.json.template"
+  archiveScrap:
+    desc: "スクラップ記事をアーカイブします"
+    req:
+      /api/scraps/{{ steps.postScrap.slug }}:
+        put:
+          headers:
+            Cookie: "_zenn_session={{ vars.session }}"
+          body:
+            application/json:
+              scrap:
+                archived: true
+    test: |
+      # ステータスコードが200であること
+      current.res.status == 200
+      # メッセージがsuccessなこと
+      && current.res.body.message == "success"
+  deleteScrap:
+    desc: "スクラップ記事を削除します"
+    req:
+      /api/scraps/{{ steps.postScrap.slug }}:
+        delete:
+          body:
+            application/json: null
+    test: |
+      # ステータスコードが204であること
+      current.res.status == 204
