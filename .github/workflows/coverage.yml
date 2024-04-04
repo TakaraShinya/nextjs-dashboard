@@ -31,7 +31,8 @@ jobs:
           repo: k1LoW/runn
       - name: test
         run: |
-          runn run --verbose day26/*.yml
+            runn run --verbose runbook/open-api.yml
+            runn run --verbose runbook/coverage-up.yml
         env:
           PETSTORE3_END_POINT: http://172.17.0.1:8080/api/v3
       - name: Setup octocov-runn-coverage
@@ -46,7 +47,7 @@ jobs:
       - name: coverage tests(main)
         continue-on-error: true
         run: |
-          runn coverage --format json day26/*.yml | octocov-runn-coverage > custom_metrics_runn.json
+          runn coverage --format json runbook/*.yml | octocov-runn-coverage > custom_metrics_runn.json
         working-directory: main
       - name: Run octocov (main)
         continue-on-error: true
@@ -59,7 +60,7 @@ jobs:
           OCTOCOV_CUSTOM_METRICS_BENCHMARK: main/custom_metrics_runn.json
       - name: coverage tests
         run: |
-          runn coverage --format json day26/*.yml | octocov-runn-coverage > custom_metrics_runn.json
+          runn coverage --format json runbook/*.yml | octocov-runn-coverage > custom_metrics_runn.json
       - name: Run octocov
         uses: k1LoW/octocov-action@v1
         with:
