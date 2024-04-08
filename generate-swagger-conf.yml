@@ -1,0 +1,22 @@
+service:
+  name: NextJS Dashboard
+  host: 127.0.0.1:1234
+  prefix: /v1
+
+resources:
+  users:
+    title: user
+    definition:
+      name: User
+  invoices:
+    title: invoice
+    definition:
+      name: Invoice
+  customers:
+    title: customer
+    definition:
+      name: Customer
+  revenue:
+    title: revenue
+    definition:
+      name: Revenue
