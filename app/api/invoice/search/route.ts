@@ -4,18 +4,24 @@ import { db } from '@vercel/postgres';
 
 /**
  * @swagger
- * /api/invoice:
+ * /api/invoice/search:
  *   get:
- *     summary: "Returns the latest invoices"
- *     description: "Returns the latest invoices"
- *     parameters: []
+ *     summary: "Search invoices data"
+ *     description: "Search invoices data"
+ *     parameters:
+ *       -
+ *         name: "query"
+ *         type: "string"
+ *         in: "query"
+ *         description: ""
+ *         required: true
  *     responses:
  *       200:
  *         description: ""
  *         schema:
  *           type: "object"
  *           properties:
- *             LatestInvoices:
+ *             SearchedInvoices:
  *               type: "object"
  *               properties:
  *                 command:
@@ -282,92 +288,35 @@ import { db } from '@vercel/postgres';
  *                 rowAsArray:
  *                   type: "boolean"
  *                   description: ""
- */
-export async function GET() {
-    try {
-        const client = await db.connect();
-        const LatestInvoices = await client.sql`
-        SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
-        FROM invoices
-        JOIN customers ON invoices.customer_id = customers.id
-        ORDER BY invoices.date DESC
-        LIMIT 5;`;
-
-        return NextResponse.json({
-            LatestInvoices
-        }, { status: 200 })
-
-    } catch (error) {
-        return NextResponse.json({ error: 'Internal Server Error' + error }, { status: 500 })
-    }
-}
-
-/**
- * @swagger
- * /api/invoice:
- *   post:
- *     summary: "Create invoice data"
- *     description: "Create invoice data"
- *     parameters:
- *       -
- *         name: "customer_id"
- *         type: "string"
- *         in: "customer_id"
- *         description: ""
- *         required: true
- *       -
- *         name: "amount"
- *         type: "number"
- *         in: "amount"
- *         description: ""
- *         required: true
- *       -
- *         name: "status"
- *         type: "string"
- *         in: "status"
- *         description: "paid or pending"
- *         required: true
- *     responses:
- *       200:
- *         description: ""
- *         schema:
- *           type: "object"
- *           properties:
- *             message:
- *               type: "string"
- *               description: ""
  *       500:
  *         description: ""
  *         schema:
  *           type: "object"
  *           properties:
- *             message:
+ *             error:
  *               type: "string"
  *               description: ""
  */
-export async function POST(request) {
-    const body =await request.json()
-
+export async function GET(req) {
+    const { searchParams } = new URL(req.url);
+    const query = searchParams.get("query");
     try {
         const client = await db.connect();
-        // Prepare data for insertion into the database
-        const { customer_id, amount, status } = body;
-        const amountInCents = amount * 100;
-        const date = new Date().toISOString().split('T')[0];
-
-        try {
-            await client.sql`
-                INSERT INTO invoices (customer_id, amount, status, date)
-                VALUES (${customer_id}, ${amountInCents}, ${status}, ${date})
-            `;
-        } catch (error) {
-            return NextResponse.json({
-                message: 'Database Error: Failed to Create Invoice.',
-            }, { status: 500 })
-        }
+        const SearchedInvoices = await client.sql`
+        SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
+        FROM invoices
+        JOIN customers ON invoices.customer_id = customers.id
+        WHERE
+            customers.name ILIKE ${`%${query}%`} OR
+            customers.email ILIKE ${`%${query}%`} OR
+            invoices.amount::text ILIKE ${`%${query}%`} OR
+            invoices.date::text ILIKE ${`%${query}%`} OR
+            invoices.status ILIKE ${`%${query}%`}
+        ORDER BY invoices.date DESC
+        LIMIT 10;`;
 
         return NextResponse.json({
-            message: 'Create Invoice Successful.',
+            SearchedInvoices
         }, { status: 200 })
 
     } catch (error) {
