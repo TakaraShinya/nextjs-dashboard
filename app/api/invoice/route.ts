@@ -1,5 +1,5 @@
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db } from '@vercel/postgres';
 
 /**
@@ -345,7 +345,7 @@ export async function GET() {
  *               type: "string"
  *               description: ""
  */
-export async function POST(request) {
+export async function POST(request: NextRequest) {
     const body =await request.json()
 
     try {

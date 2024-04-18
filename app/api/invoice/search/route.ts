@@ -1,5 +1,5 @@
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db } from '@vercel/postgres';
 
 /**
@@ -297,7 +297,7 @@ import { db } from '@vercel/postgres';
  *               type: "string"
  *               description: ""
  */
-export async function GET(req) {
+export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const query = searchParams.get("query");
     try {
