@@ -1,0 +1,28 @@
+{
+  "background_color": "#ffffff",
+  "description": "The official Next.js Course Dashboard, built with App Router.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Acme Dashboard",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Acme Dashboard",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "48x48"
+    },
+    {
+      "src": "https://next-learn-dashboard.vercel.sh/opengraph-image.png?886e7c13529660db",
+      "type": "image/png",
+      "sizes": "1686x882"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ]
+}
