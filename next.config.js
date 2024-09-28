@@ -5,10 +5,12 @@ const withPWA = require('next-pwa')({
   reloadOnOnline : true,
   register: true,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development'
 })
 
 module.exports = withPWA({
   // next.js config
   reactStrictMode: false,
+  experimental: {
+    appDir: true,             // <---- Comment and Uncomment this
+  },
 })
