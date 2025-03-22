@@ -7,6 +7,7 @@ import { Metadata } from 'next';
 // };
 
 console.log("NODE_ENV = " + process.env.NODE_ENV);
+console.debug("NODE_ENV = " + process.env.NODE_ENV);
 console.info("NODE_ENV = " + process.env.NODE_ENV);
 console.warn("NODE_ENV = " + process.env.NODE_ENV);
 console.error("NODE_ENV = " + process.env.NODE_ENV);
