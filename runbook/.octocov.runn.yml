@@ -7,7 +7,7 @@ testExecutionTime:
   if: false
 diff:
   datastores:
-    - local://main
+    - local://
 comment:
   if: is_pull_request
 summary:

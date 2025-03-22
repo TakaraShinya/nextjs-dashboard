@@ -57,7 +57,7 @@ jobs:
         env:
           OCTOCOV_GITHUB_REF: refs/heads/main
           OCTOCOV_GITHUB_SHA: none
-          OCTOCOV_CUSTOM_METRICS_BENCHMARK: main/custom_metrics_runn.json
+          OCTOCOV_CUSTOM_METRICS_BENCHMARK: custom_metrics_runn.json
       - name: coverage tests
         run: |
           runn coverage --format json runbook/*.yml | octocov-runn-coverage > custom_metrics_runn.json
